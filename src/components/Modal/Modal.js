@@ -1,11 +1,44 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { Overlay, ImgModal } from './styled';
 import { createPortal } from 'react-dom';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export default class Modal extends Component {
+// const Modal = ({ url, openModal }) => {
+//   const handleKeyDown = e => {
+//     if (e.code === 'Escape') {
+//       openModal();
+//     }
+//   };
+
+//   useEffect(() => {
+//     console.log('1');
+//     window.addEventListener('keydown', handleKeyDown);
+//   });
+
+//   useEffect(() => {
+//     console.log('2');
+//     window.remove.EventListener('keydown', handleKeyDown);
+//   }, []);
+
+//   const handleBackdropClick = event => {
+//     if (event.currentTarget === event.target) {
+//       openModal();
+//     }
+//   };
+
+//   return createPortal(
+//     <Overlay onClick={handleBackdropClick}>
+//       <ImgModal>
+//         <img src={url} alt="" />
+//       </ImgModal>
+//     </Overlay>,
+//     modalRoot
+//   );
+// };
+
+class Modal extends Component {
   componentDidMount() {
     window.addEventListener('keydown', this.handleKeyDown);
   }
@@ -37,6 +70,8 @@ export default class Modal extends Component {
     );
   }
 }
+
+export default Modal;
 
 Modal.propTypes = {
   url: PropTypes.string.isRequired,
