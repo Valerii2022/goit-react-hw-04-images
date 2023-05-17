@@ -1,20 +1,13 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
 import { LoadMoreBtn } from './styled';
 
-class Button extends Component {
-  handleBtnClick = () => {
-    this.props.handleSubmit();
-  };
-
-  render() {
-    return (
-      <LoadMoreBtn onClick={this.handleBtnClick} type="button">
-        Load more
-      </LoadMoreBtn>
-    );
-  }
-}
+const Button = ({ handleSubmit }) => {
+  return (
+    <LoadMoreBtn onClick={() => handleSubmit()} type="button">
+      Load more
+    </LoadMoreBtn>
+  );
+};
 
 export default Button;
 
