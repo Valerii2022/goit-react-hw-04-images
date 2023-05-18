@@ -17,22 +17,20 @@ const App = () => {
   const [loadMoreBtn, setLoadMoreBtn] = useState(false);
 
   useEffect(() => {
-    if (query !== '') {
+    if (query === '') {
+      return;
+    }
+    (async () => {
       setLoaderVisible(true);
       try {
-        const fetchData = async () => {
-          const { data } = await pixabayApi.fetchPhotos(query, pageNumber);
-          console.log(data);
-          handleSuccessFetch(data);
-          return data;
-        };
-        console.log(fetchData());
+        const { data } = await pixabayApi.fetchPhotos(query, pageNumber);
+        handleSuccessFetch(data);
       } catch (error) {
         handleErrorFetch(error);
       } finally {
         setLoaderVisible(false);
       }
-    }
+    })();
   }, [pageNumber, query]);
 
   const handleSubmitForm = currentQuery => {
@@ -169,3 +167,14 @@ const App = () => {
 // }
 
 export default App;
+
+// useEffect(() => {
+//   (async () => {
+//     try {
+//       const books = await fetchBooks();
+//       setBooks(books);
+//     } catch (err) {
+//       console.log('Error occured when fetching books');
+//     }
+//   })();
+// }, []);

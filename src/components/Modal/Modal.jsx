@@ -7,30 +7,18 @@ const modalRoot = document.querySelector('#modal-root');
 
 const Modal = ({ url, openModal }) => {
   useEffect(() => {
-    // window.addEventListener('keydown', handleKeyDown);
-    console.log('mount');
+    const handleKeyDown = e => {
+      if (e.code === 'Escape') {
+        openModal();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      // window.remove.EventListener('keydown', handleKeyDown);
-      console.log('unmount');
+      window.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
-
-  // const handleKeyDown = e => {
-  //   if (e.code === 'Escape') {
-  //     openModal();
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener('keydown', handleKeyDown);
-  //   return window.remove.EventListener('keydown', handleKeyDown);
-  // });
-
-  // useEffect(() => {
-  //   console.log('2');
-  //   window.remove.EventListener('keydown', handleKeyDown);
-  // }, [handleKeyDown]);
+  }, [openModal]);
 
   const handleBackdropClick = event => {
     if (event.currentTarget === event.target) {
