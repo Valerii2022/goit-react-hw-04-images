@@ -1,11 +1,21 @@
 import PropTypes from 'prop-types';
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Overlay, ImgModal } from './styled';
 import { createPortal } from 'react-dom';
 
 const modalRoot = document.querySelector('#modal-root');
 
 const Modal = ({ url, openModal }) => {
+  useEffect(() => {
+    // window.addEventListener('keydown', handleKeyDown);
+    console.log('mount');
+
+    return () => {
+      // window.remove.EventListener('keydown', handleKeyDown);
+      console.log('unmount');
+    };
+  }, []);
+
   // const handleKeyDown = e => {
   //   if (e.code === 'Escape') {
   //     openModal();
@@ -14,6 +24,7 @@ const Modal = ({ url, openModal }) => {
 
   // useEffect(() => {
   //   window.addEventListener('keydown', handleKeyDown);
+  //   return window.remove.EventListener('keydown', handleKeyDown);
   // });
 
   // useEffect(() => {
