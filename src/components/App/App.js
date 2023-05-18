@@ -9,6 +9,8 @@ import Loader from 'components/Loader';
 
 const pixabayApi = new PixabayAPI();
 
+const New =()=>{}
+
 class App extends Component {
   state = {
     query: '',
