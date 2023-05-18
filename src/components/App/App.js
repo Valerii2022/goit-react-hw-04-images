@@ -10,6 +10,7 @@ import Loader from 'components/Loader';
 const pixabayApi = new PixabayAPI();
 
 // const New =()=>{}
+console.log('test');
 
 class App extends Component {
   state = {
